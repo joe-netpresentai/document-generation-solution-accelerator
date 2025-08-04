@@ -11,7 +11,7 @@ param environmentName string
 param secondaryLocation string = 'eastus2'
 
 @description('Azure location for the solution. If not provided, it defaults to the resource group location.')
-param AZURE_LOCATION string = ''
+param AZURE_LOCATION string = 'eastus'
 
 // ========== AI Deployments Location ========== //
 @allowed([
@@ -70,7 +70,8 @@ param azureAiAgentApiVersion string = '2025-05-01'
 @description('Capacity of the GPT deployment:')
 // You can increase this, but capacity is limited per model/region, so you will get errors if you go over
 // https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits
-param gptDeploymentCapacity int = 150
+// param gptDeploymentCapacity int = 150
+param gptDeploymentCapacity int = 20
 
 @minLength(1)
 @description('Name of the Text Embedding model to deploy:')
@@ -79,7 +80,8 @@ param embeddingModel string = 'text-embedding-ada-002'
 var abbrs = loadJsonContent('./abbreviations.json')
 @minValue(10)
 @description('Capacity of the Embedding Model deployment')
-param embeddingDeploymentCapacity int = 80
+// param embeddingDeploymentCapacity int = 80
+param embeddingDeploymentCapacity int = 20
 
 @description('Image tag for the App Service container. Default is "latest".')
 param imageTag string = 'latest'
